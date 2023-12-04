@@ -12,7 +12,7 @@ class Starship(models.Model):
     value_when_new = models.IntegerField('Value when new', null=False)
 
     length = models.IntegerField('Length', null=False)
-    max_atmosphering_speed = models.IntegerField('Length', null=False)
+    max_atmosphering_speed = models.IntegerField('Maximum Speed', null=False)
     hyperdrive_capacity = models.IntegerField('Hyperdrive Capacity', null=False)
     min_crew = models.IntegerField('Minimum Crew Compliment', null=False)
     max_crew = models.IntegerField('Maximum Crew Compliment', null=False)
