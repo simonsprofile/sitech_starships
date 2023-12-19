@@ -40,7 +40,8 @@ INSTALLED_APPS = [
 
     'starships',
     'listings',
-    'sales'
+
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
