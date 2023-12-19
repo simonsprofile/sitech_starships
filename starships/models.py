@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Starship(models.Model):
-    created = models.DateTimeField('Created at', auto_created=True)
+    created = models.DateTimeField('Created at', auto_now_add=True)
     updated = models.DateTimeField('Updated at', auto_now=True)
 
     name = models.CharField('Name', max_length=100, blank=False)

@@ -10,7 +10,7 @@ class Listing(models.Model):
         ('inactive', 'Inactive'),
     )
     
-    created = models.DateTimeField('Created at', auto_created=True)
+    created = models.DateTimeField('Created at', auto_now_add=True)
     updated = models.DateTimeField('Updated at', auto_now=True)
 
     status = models.CharField(
