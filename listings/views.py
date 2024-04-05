@@ -12,9 +12,12 @@ from .serializers import ListingSerializer
 
 class ListingsList(APIView):
     def get(self, request, format=None):
-        highest_price = Listing.objects.order_by(
-            '-sale_price'
-        ).first().sale_price
+        try:
+            highest_price = Listing.objects.order_by(
+                '-sale_price'
+            ).first().sale_price
+        except AttributeError:
+            highest_price = 0
 
         sold = request.GET.get('sold', False)
         status = request.GET.get('status', 'active')
@@ -59,10 +62,11 @@ class ListingsList(APIView):
         return Response(serializer.data)
 
     def post(self, request, format=None):
-        serializer = Listing(data=request.data)
+        serializer = ListingSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
